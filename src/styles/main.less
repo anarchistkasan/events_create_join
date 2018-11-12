@@ -1,6 +1,241 @@
-@custom-red: rgb(221, 65, 18);
-@light-custom-red: @custom-red + #000;
+@header-blue: #29447d;
+@header-dark-blue: #162a54;
+@background-color-common: #f6f4f6;
+@shadow-color: #f4f4f5;
+@section-header-color: #727e8b;
+@header-underline-color: #e6e6e6;
+@button-color: #f97a17;
+@success-color: #ebfcee;
 
-.header {
-  color: @light-custom-red;
+
+.application-wrapper {
+  background-color: @background-color-common;
+  padding-bottom: 20px;
+  font-family: sans-serif;
+
+  .new-event-header {
+    background-color: @header-blue;
+    border-top: @header-dark-blue 10px solid;
+    color: white;
+    width: 100%;
+    padding-left: 15%;
+  
+    margin-left: -10px;
+    margin-top: -10px;
+
+    h1 {
+      font-weight: normal;
+      padding-bottom: 10px;
+    }
+  }
+
+  .event-section {
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px lightgrey;
+    margin: 5%;
+    padding: 2%;
+    border-radius: 1px;
+  
+    .event-section-header {
+      color: @section-header-color;
+      border-bottom: @header-underline-color 1px solid;
+      margin-bottom: 10px;
+
+      h2 {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .input-container,
+  .input-container-text,
+  .input-container-date,
+  .input-container-radio {
+    margin-bottom: 2em;
+
+    .input-wrapper {
+      color: @section-header-color;
+      display: flex;
+     
+
+      label {
+        flex: 1;
+        padding-top: 10px;
+        text-transform: uppercase;
+        max-width: 200px;
+      }
+
+      input, textarea, select {
+        flex: 2;
+        border: 1px solid lightgray;
+        padding: 10px;
+        font-size: 1em;
+      }
+
+      textarea {
+        height: 150px;
+      }
+
+      .input-error-wrapper,
+      .dropdown-error-wrapper {
+        flex: 1;
+      }
+
+    }
+
+    .radio-wrapper {
+      margin-right: 20px;
+    }
+
+    .hint-wrapper {
+      display: flex;
+      color: lightgray;
+  
+      .hint-spacer {
+        flex: 1;
+        max-width: 200px;
+      }
+      
+      p {
+        flex: 2;
+      }
+  
+      .hint-error {
+        flex: 1;
+      }
+    }
+  }
+
+  .input-container-radio {
+    .input-wrapper {
+      .input-error-wrapper {
+        flex: 3;
+      }
+    }
+  }
+  
+
+  .input-container-text {
+    input {
+      flex: 1;
+      max-width: 100px;
+    }
+
+    .input-text {
+      padding-top: 10px;
+      margin-left: 15px;
+    }
+  }
+
+  .input-container-date {
+    input[type=date] {
+      flex: 2;
+      max-width: 200px;
+    }
+
+    input[type=time] {
+      max-width: 100px;
+    }
+
+    input[type=radio] {
+      flex: 1;
+      max-width: 10px;
+    }
+
+    .meridian {
+      padding-top: 4px;
+      margin-right: 10px;
+    }
+
+    .input-text-at {
+      padding-top: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  .submit-button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: white;
+    background-color: @button-color;
+    cursor: pointer;
+    padding: 0.5em 1em;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    border: solid 1px transparent;
+    border-radius: 1px;
+    margin-left: 45%;
+
+
+    &:hover,
+    &:active {
+      transform: translateY(1px);
+      filter: saturate(150%);
+    }
+
+    &:disabled,
+    &[disabled] {
+      cursor: default;
+      background-color: gray;
+      color: black;
+
+      &:hover,
+      &:active {
+        transform: none;
+        filter: none;
+      }
+    }
+  }
+
+
+  .error-message {
+    @arrow-size: 5px;
+    @error-background: #fbc8c8;
+
+    margin-left: 20px;
+    margin-top: 10px;
+    position: relative;
+
+    &::before {
+        content: "";
+        border-right: @arrow-size solid @error-background;
+        border-top:  @arrow-size solid transparent;
+        border-bottom: @arrow-size solid transparent;
+        position: absolute;
+        top: 4px;
+        left: -5px;
+    }
+
+    &::after {
+      content: attr(message);
+      width: 120px;
+      background: @error-background;
+      color: #FFFFFF;
+      padding: 5px 10px;
+      -moz-border-radius: 6px;
+      -webkit-border-radius:6px;
+      -khtml-border-radius:6px;
+      border-radius: 6px;
+    }
+  }
+
+  .dropdown-error-wrapper {
+    .error-message {
+      margin-top: 5px;
+    }
+  }
+
+
+  .success-message {
+    background-color: @success-color;
+    padding: 10px;
+    box-shadow: 2px 2px 2px gray;
+
+    h1 {
+      color: green;
+    }
+  }
 }

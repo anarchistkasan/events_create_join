@@ -1,14 +1,19 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from '~/components/App';
 
+import { Provider } from 'react-redux';
+import configureStore from '~/store/configureStore';
+
+const store = configureStore();
+
 const root = document.createElement('div');
 
 ReactDOM.render(
-  <Fragment>
+  <Provider store={store}>
     <App />
-  </Fragment>,
+  </Provider>,
   root,
 );
 
